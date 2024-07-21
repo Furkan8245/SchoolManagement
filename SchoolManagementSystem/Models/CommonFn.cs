@@ -17,8 +17,23 @@ namespace SchoolManagementSystem.Models
             {
                 if (con.State == ConnectionState.Closed)
                 {
-                    
+                    con.Open();
                 }
+                SqlCommand cmd=new SqlCommand(query, con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+            public DataTable Fetch(string query) 
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                }
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter sda=new SqlDataAdapter();    
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                return dt;
 
             }
         }
