@@ -12,7 +12,7 @@ namespace SchoolManagementSystem.Admin
 {
     public partial class AddClass : System.Web.UI.Page
     {
-        Commonfnx fn=new Commonfnx();
+        readonly Commonfnx fn=new Commonfnx();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack)
@@ -27,10 +27,6 @@ namespace SchoolManagementSystem.Admin
             DataTable dt = fn.Fetch("Select Row_NUMBER() over(Order by (Select 1)) as [Sr.No],ClassId,ClassName from Class");
             GridView1.DataSource = dt;
             GridView1.DataBind();
-
-        }
-        protected void txtClass_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -63,5 +59,34 @@ namespace SchoolManagementSystem.Admin
               Response.Write("<script>alert('"+ ex.Message+"')");
             }
         }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+
+        }
+
+        protected void GridView_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+          
+        }
+        protected void txtClass_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+
     }
 }

@@ -36,6 +36,11 @@ namespace SchoolManagementSystem.Models
                 return dt;
 
             }
+
+            internal void Query(string query, SqlParameter[] parameters)
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
