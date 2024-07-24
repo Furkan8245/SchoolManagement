@@ -61,16 +61,19 @@ namespace SchoolManagementSystem.Admin
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            GridView1.PageIndex = e.NewPageIndex;
+            GetClass() ;
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-
+            GridView1.EditIndex = -1;
+            GetClass() ;
         }
 
         protected void GridView_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            GridView1.EditIndex = e.NewEditIndex;
 
         }
 
@@ -80,7 +83,21 @@ namespace SchoolManagementSystem.Admin
         }
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-          
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int cId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                string ClassName = (row.FindControl("txtClassEdit") as TextBox).Text;
+                fn.Query("Update Class set ClassName= '" + ClassName + "' where ClassId='" + cId + "' ");
+                lblMsg.Text = "Class Updated Succesfully!";
+                lblMsg.CssClass = "aler alert-success";
+                GridView1.EditIndex = -1;
+                GetClass();
+            }
+            catch(Exception ex)
+            {
+
+            }
         }
         protected void txtClass_TextChanged(object sender, EventArgs e)
         {
