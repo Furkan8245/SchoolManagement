@@ -96,12 +96,14 @@ namespace SchoolManagementSystem.Admin
             }
             catch(Exception ex)
             {
-
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
         protected void txtClass_TextChanged(object sender, EventArgs e)
         {
-            
+            DataTable dt = fn.Fetch("Select * from Fees");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
         }
 
 
