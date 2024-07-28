@@ -15,26 +15,26 @@ namespace SchoolManagementSystem.Models
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolCS"].ConnectionString);
             public void Query(string query)
             {
-                if (con.State == ConnectionState.Closed)
+                if (con.State==ConnectionState.Closed)
                 {
                     con.Open();
                 }
-                SqlCommand cmd=new SqlCommand(query, con);
+                SqlCommand cmd= new SqlCommand(query, con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
-            public DataTable Fetch(string query) 
+            public DataTable Fetch(string query)
             {
                 if (con.State == ConnectionState.Closed)
                 {
                     con.Open();
                 }
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataAdapter sda=new SqlDataAdapter(cmd);    
+                SqlCommand cmd = new SqlCommand(query, con); // Düzeltme burada
+                SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
+                con.Close(); // Kapatmayı unutmayın
                 return dt;
-
             }
 
             internal void Query(string query, SqlParameter[] parameters)

@@ -65,7 +65,9 @@ namespace SchoolManagementSystem.Admin
 
         private void GetFees()
         {
-            throw new NotImplementedException();
+            DataTable dt = fn.Fetch("Select * from Fees");
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
         }
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using static SchoolManagementSystem.Models.CommonFn;
 
@@ -12,13 +7,13 @@ namespace SchoolManagementSystem.Admin
 {
     public partial class AddClass : System.Web.UI.Page
     {
-        readonly Commonfnx fn=new Commonfnx();
+        Commonfnx fn = new Commonfnx();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
+            if (!IsPostBack)
             {
                 GetClass();
-
+                
             }
         }
 
@@ -34,8 +29,8 @@ namespace SchoolManagementSystem.Admin
         {
             try
             {
-                DataTable dt = fn.Fetch("Select * from Class where ClassName= '"+ txtClass.Text.Trim() +"' ");
-                if (dt.Rows.Count==0)
+                DataTable dt = fn.Fetch("Select * from Class where ClassName= '" + txtClass.Text.Trim() + "' ");
+                if (dt.Rows.Count == 0)
                 {
                     string query = "Insert into Class values('" + txtClass.Text.Trim() + "')";
                     fn.Query(query);
@@ -51,24 +46,24 @@ namespace SchoolManagementSystem.Admin
                     lblMsg.Text = "Entered Class already exists!";
                     lblMsg.CssClass = "alert alert-danger";
                 }
-                
+
 
             }
-            catch(Exception ex) 
-            { 
-              Response.Write("<script>alert('"+ ex.Message+"')");
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            GetClass() ;
+            GetClass();
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            GetClass() ;
+            GetClass();
         }
 
         protected void GridView_RowEditing(object sender, GridViewEditEventArgs e)
@@ -94,7 +89,7 @@ namespace SchoolManagementSystem.Admin
                 GridView1.EditIndex = -1;
                 GetClass();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Response.Write("<script>alert('" + ex.Message + "');</script>");
             }
