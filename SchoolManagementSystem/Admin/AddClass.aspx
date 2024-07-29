@@ -154,15 +154,23 @@
                 <div class="col-md-6">
                     <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" DataKeyNames="ClassId" AutoGenerateColumns="False"
                         OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCancelingEdit="GridView1_RowCancelingEdit"
-                        OnRowEditing="GridView_RowEditing" OnRowUpdating="GridView1_RowUpdating" EmptyDataText="No Record to display!">
+                        OnRowEditing="GridView_RowEditing" OnRowUpdating="GridView1_RowUpdating" EmptyDataText="No Record to display!" AllowPaging="true" PageSize="4">
                         <Columns>
                             <asp:BoundField DataField="Sr.No" HeaderText="Sr.No" ReadOnly="True">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Class">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txtClassEdit" runat="server" Text='<%#Eval("ClassName") %>' CssClass="form-control"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="lblClassName" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                                </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:TemplateField>
+                            <asp:CommandField CausesValidation="False" ShowEditButton="True" HeaderText="Operation"></asp:CommandField>
                         </Columns>
+                        <HeaderStyle BackColor="#5558C9" ForeColor="White" />
                     </asp:GridView>
                 </div>
             </div>
