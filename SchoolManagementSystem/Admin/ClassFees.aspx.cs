@@ -27,7 +27,7 @@ namespace SchoolManagementSystem.Admin
             ddlClass.DataTextField = "ClassName";
             ddlClass.DataValueField = "ClassId";
             ddlClass.DataBind();
-            ddlClass.Items.Insert(0, new ListItem("Select Class", ""));
+            ddlClass.Items.Insert(0, "Select Class");
         }
 
 
@@ -35,8 +35,8 @@ namespace SchoolManagementSystem.Admin
         {
             try
             {
-                string classVal = ddlClass.SelectedItem.Text;
-                DataTable dt = fn.Fetch("Select * from Fees where ClassId= '" + ddlClass.SelectedItem.Value + "' ");
+                DataTable dt = fn.Fetch("Select * from Fees where ClassId='" + ddlClass.SelectedItem.Value + "'");
+               
                 if (dt.Rows.Count == 0)
                 {
                     string query = "Insert into Fees values('"+ ddlClass.SelectedItem.Value+"','" + txtFeeAmounts.Text.Trim() + "')";
