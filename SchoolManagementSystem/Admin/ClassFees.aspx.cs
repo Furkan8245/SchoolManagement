@@ -17,6 +17,7 @@ namespace SchoolManagementSystem.Admin
             if (!IsPostBack)
             {
                 GetClass();
+                GetFees();
             }
         }
 
@@ -35,6 +36,7 @@ namespace SchoolManagementSystem.Admin
         {
             try
             {
+                string classVal = ddlClass.SelectedItem.Text;
                 DataTable dt = fn.Fetch("Select * from Fees where ClassId='" + ddlClass.SelectedItem.Value + "'");
                
                 if (dt.Rows.Count == 0)
@@ -65,7 +67,8 @@ namespace SchoolManagementSystem.Admin
 
         private void GetFees()
         {
-            DataTable dt = fn.Fetch("Select * from Fees");
+            DataTable dt = fn.Fetch(@"Select Row_NUMBER() oveer(Order by (Select 1)) as [Sr.No],f.FeesId,f.ClassId,c.ClassName,
+                                    f.FeesAmount from Fees f inner join Class c on c.ClassId= f.ClassId");
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }

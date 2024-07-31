@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6">
                     <label for="txtFeeAmounts">Fees(Annual)</label>
-                    <asp:TextBox ID="txtFeeAmounts" runat="server" CssClass="form-control" placeholder="Enter Fees Amount" required></asp:TextBox>
+                    <asp:TextBox ID="txtFeeAmounts" runat="server" CssClass="form-control" placeholder="Enter Fees Amount" TextMode="Number" required></asp:TextBox>
 
                 </div>
             </div>
@@ -35,7 +35,22 @@
 
             <div class="row mb-3 mr-lg-5 ml-lg-5">
                 <div class="col-md-6">
-                    <asp:GridView ID="GridView1" runat="server"></asp:GridView>
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" EmptyDataText="No record to display!" AutoGenerateColumns="False">
+                        <Columns>
+                            <asp:BoundField DataField="Sr.No" HeaderText="Sr.No">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ClassName" HeaderText="Class" ReadOnly="True">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:BoundField>
+                            <asp:TemplateField HeaderText="Fees(Annual)">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:TemplateField>
+                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            </asp:CommandField>
+                        </Columns>
+                    </asp:GridView>
                 </div>
             </div>
         </div>
