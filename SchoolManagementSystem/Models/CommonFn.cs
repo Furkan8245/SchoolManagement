@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
+using System.Data.SqlClient;
 
 namespace SchoolManagementSystem.Models
 {
@@ -12,34 +9,48 @@ namespace SchoolManagementSystem.Models
     {
         public class Commonfnx
         {
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SchoolCS"].ConnectionString);
+            private readonly string _connectionString = ConfigurationManager.ConnectionStrings["SchoolCS"].ConnectionString;
+
             public void Query(string query)
             {
-                if (con.State==ConnectionState.Closed)
+                using (SqlConnection con = new SqlConnection(_connectionString))
                 {
-                    con.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-                SqlCommand cmd= new SqlCommand(query, con);
-                cmd.ExecuteNonQuery();
-                con.Close();
             }
+
             public DataTable Fetch(string query)
             {
-                if (con.State == ConnectionState.Closed)
-                {
-                    con.Open();
-                }
-                SqlCommand cmd = new SqlCommand(query, con); // Düzeltme burada
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                sda.Fill(dt);
-                con.Close(); // Kapatmayı unutmayın
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            con.Open();
+                            sda.Fill(dt);
+                        }
+                    }
+                }
                 return dt;
             }
 
             internal void Query(string query, SqlParameter[] parameters)
             {
-                throw new NotImplementedException();
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
             }
         }
     }

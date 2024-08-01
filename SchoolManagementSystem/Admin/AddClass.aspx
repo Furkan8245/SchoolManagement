@@ -129,7 +129,7 @@
             </div>
         </div>
     </div>--%>
-    <div style="background-image:url('..\Image\bc.jpg'); width=100%; height:720px; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;">
+    <div style="background-image:url('..\Image\bc.jpg'); width:100%; height:720px; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;">
 
         <div class="container p-md-4 p-sm-4">
             <div>

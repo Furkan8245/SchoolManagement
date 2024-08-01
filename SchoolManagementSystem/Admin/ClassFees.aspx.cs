@@ -72,5 +72,56 @@ namespace SchoolManagementSystem.Admin
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex=e.NewPageIndex;
+            GetFees();
+        }
+        protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            GetFees();
+        }
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                int feesId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                fn.Query("Delete from Fees where FeesId='" + feesId + "' ");
+                lblMsg.Text = "Fees Deleted Succesfully!";
+                lblMsg.CssClass = "aler alert-success";
+                GridView1.EditIndex = -1;
+                GetFees() ;
+
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+
+        }
+        protected void GridView1_RowEditing(object sender,GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = -1;
+            GetFees();
+        }
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            try
+            {
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                int feesId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
+                string feeAmt = (row.FindControl("TextBox1") as TextBox).Text;
+                fn.Query("Update Fees set FeesAmount='"+feeAmt+"' where FeesId='"+feesId+"' ");
+                lblMsg.Text = "Fees Updated Succesfully!";
+                lblMsg.CssClass = "aler alert-success";
+                GridView1.EditIndex = -1;
+                GetFees() ;
+            }
+            catch (Exception ex)
+            {
+                Response.Write("<script>alert('" + ex.Message + "');</script>");
+            }
+        }
     }
 }

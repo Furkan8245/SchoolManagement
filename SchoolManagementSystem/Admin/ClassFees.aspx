@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div style="background-image:url('..\Image\bc.jpg'); width=100%; height:720px; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;">
+        <div style="background-image:url('..\Image\bc.jpg'); width:100%; height:720px; background-repeat:no-repeat; background-size:cover; background-attachment:fixed;">
 
         <div class="container p-md-4 p-sm-4">
             <div>
@@ -35,7 +35,14 @@
 
             <div class="row mb-3 mr-lg-5 ml-lg-5">
                 <div class="col-md-6">
-                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" EmptyDataText="No record to display!" AutoGenerateColumns="False">
+                    <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" EmptyDataText="No record to display!" AutoGenerateColumns="False" AllowPaging="true" 
+                        OnPageIndexChanging="GridView1_PageIndexChanging" 
+                        OnRowCancelingEdit="GridView1_RowCancelingEdit" 
+                        PageSize="4" 
+                        OnRowDeleting="GridView1_RowDeleting" 
+                        OnRowEditing="GridView1_RowEditing" 
+                        OnRowUpdating="GridView1_RowUpdating" 
+                        DataKeyNames="FeesId">
                         <Columns>
                             <asp:BoundField DataField="Sr.No" HeaderText="Sr.No">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
@@ -44,6 +51,12 @@
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="Fees(Annual)">
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("FeesAmount") %>' CssClass="form-control"></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <asp:Label ID="Label1" runat="server" Text='<%# Eval("FeesAmount") %>'></asp:Label>
+                                </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:TemplateField>
                             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
