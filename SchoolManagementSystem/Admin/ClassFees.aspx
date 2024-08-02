@@ -28,7 +28,7 @@
 
             <div class="row mb-3 mr-lg-5 ml-lg-5">
                 <div class="col-md-3 col-md-offset-2 mb-3">
-                    <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Ekle Class" />
+                    <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Ekle Class" OnClick="btnEkle_Class" />
 
                 </div>
             </div>
@@ -59,7 +59,7 @@
                                 </ItemTemplate>
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:TemplateField>
-                            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
+                            <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
                                 <ItemStyle HorizontalAlign="Center"></ItemStyle>
                             </asp:CommandField>
                         </Columns>

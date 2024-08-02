@@ -40,6 +40,7 @@ namespace SchoolManagementSystem.Models
                 return dt;
             }
 
+
             internal void Query(string query, SqlParameter[] parameters)
             {
                 using (SqlConnection con = new SqlConnection(_connectionString))

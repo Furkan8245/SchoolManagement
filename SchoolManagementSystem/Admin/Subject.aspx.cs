@@ -9,15 +9,15 @@ using static SchoolManagementSystem.Models.CommonFn;
 
 namespace SchoolManagementSystem.Admin
 {
-    public partial class ClassFees : System.Web.UI.Page
+    public partial class Subject : System.Web.UI.Page
     {
-        Commonfnx fn=new Commonfnx();
+        Commonfnx fn = new Commonfnx();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 GetClass();
-                GetFees();
+                GetSubject();
             }
         }
 
@@ -37,23 +37,24 @@ namespace SchoolManagementSystem.Admin
             try
             {
                 string classVal = ddlClass.SelectedItem.Text;
-                DataTable dt = fn.Fetch("Select * from Fees where ClassId='" + ddlClass.SelectedItem.Value + "'");
-               
+                DataTable dt = fn.Fetch("Select * from Subject where ClassId='" + ddlClass.SelectedItem.Value +
+                                        "' , SubjectName='"+txtSubject.Text.Trim()+"' ");
+
                 if (dt.Rows.Count == 0)
                 {
-                    string query = "Insert into Fees values('"+ ddlClass.SelectedItem.Value+"','" + txtFeeAmounts.Text.Trim() + "')";
+                    string query = "Insert into Subject values('" + ddlClass.SelectedItem.Value + "','" + txtSubject.Text.Trim() + "')";
                     fn.Query(query);
                     lblMsg.Text = "Inserted Succesfully!";
                     lblMsg.CssClass = "alert alert-success";
                     ddlClass.SelectedIndex = 0;
-                    txtFeeAmounts.Text=string.Empty;
-                    GetFees();
+                    txtSubject.Text = string.Empty;
+                    GetSubject();
 
 
                 }
                 else
                 {
-                    lblMsg.Text = "Entered Fees already exists for <b> '"+ classVal+ "'</b>!";
+                    lblMsg.Text = "Entered Subject already exists for <b> '" + classVal + "'</b>!";
                     lblMsg.CssClass = "alert alert-danger";
                 }
 
@@ -65,45 +66,28 @@ namespace SchoolManagementSystem.Admin
             }
         }
 
-        private void GetFees()
+        private void GetSubject()
         {
-            DataTable dt = fn.Fetch(@"Select Row_NUMBER() oveer(Order by (Select 1)) as [Sr.No],f.FeesId,f.ClassId,c.ClassName,
-                                    f.FeesAmount from Fees f inner join Class c on c.ClassId= f.ClassId");
+            DataTable dt = fn.Fetch(@"Select Row_NUMBER() over(Order by (Select 1)) as [Sr.No],s.Subject,s.ClassId,c.ClassName,
+                                    s.SubjectName from Subject s inner join Class c on c.ClassId= s.ClassId");
             GridView1.DataSource = dt;
             GridView1.DataBind();
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            GridView1.PageIndex=e.NewPageIndex;
-            GetFees();
+            GridView1.PageIndex = e.NewPageIndex;
+            GetSubject();
         }
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            GetFees();
+            GetSubject();
         }
-        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            try
-            {
-                int feesId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
-                fn.Query("Delete from Fees where FeesId='" + feesId + "' ");
-                lblMsg.Text = "Fees Deleted Succesfully!";
-                lblMsg.CssClass = "aler alert-success";
-                GridView1.EditIndex = -1;
-                GetFees() ;
-
-            }
-            catch (Exception ex)
-            {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
-            }
-
-        }
-        protected void GridView1_RowEditing(object sender,GridViewEditEventArgs e)
+        
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            GetFees();
+            GetSubject();
         }
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -112,11 +96,11 @@ namespace SchoolManagementSystem.Admin
                 GridViewRow row = GridView1.Rows[e.RowIndex];
                 int feesId = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Values[0]);
                 string feeAmt = (row.FindControl("TextBox1") as TextBox).Text;
-                fn.Query("Update Fees set FeesAmount='"+feeAmt+"' where FeesId='"+feesId+"' ");
+                fn.Query("Update Fees set FeesAmount='" + feeAmt + "' where FeesId='" + feesId + "' ");
                 lblMsg.Text = "Fees Updated Succesfully!";
                 lblMsg.CssClass = "aler alert-success";
                 GridView1.EditIndex = -1;
-                GetFees() ;
+                GetSubject();
             }
             catch (Exception ex)
             {
