@@ -79,6 +79,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\styles.css" />
+    <Content Include="default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Image\bc.jpg" />
     <Content Include="Image\profile.png" />
@@ -229,6 +230,13 @@
     </Compile>
     <Compile Include="Admin\Subject.aspx.designer.cs">
       <DependentUpon>Subject.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

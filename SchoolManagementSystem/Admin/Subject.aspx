@@ -44,20 +44,28 @@
                     OnRowUpdating="GridView1_RowUpdating" 
                     DataKeyNames="SubjectId">
                     <Columns>
-                        <asp:BoundField DataField="Sr.No" HeaderText="Sr.No">
-                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                        <asp:BoundField DataField="Sr.No" HeaderText="Sr.No" ReadOnly="true">
+                            <ItemStyle HorizontalAlign="Center" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="ClassName" HeaderText="Class" ReadOnly="True">
+                        <asp:TemplateField HeaderText="Class">
+                            <EditItemTemplate>
+                                <asp:DropDownList ID="DropDownList1" runat="server" DataSource="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>' CssClass="form-control">
+                                </asp:DropDownList>
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCS %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                            </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center"></ItemStyle>
-                        </asp:BoundField>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Subject">
                             <EditItemTemplate>
-                                <asp:TextBox ID="TextBox1" runat="server" Text='<%# Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="TextBox1" runat="server" Text='<%#Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("SubjectName") %>'></asp:Label>
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                            <ItemStyle HorizontalAlign="Center" />
                         </asp:TemplateField>
                         <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
                             <ItemStyle HorizontalAlign="Center"></ItemStyle>

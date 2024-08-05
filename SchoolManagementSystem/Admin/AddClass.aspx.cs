@@ -19,7 +19,7 @@ namespace SchoolManagementSystem.Admin
 
         private void GetClass()
         {
-            DataTable dt = fn.Fetch("Select Row_NUMBER() over(Order by (Select 1)) as [Sr.No],ClassId,ClassName from Class");
+            DataTable dt = fn.Fetch("Select ROW_NUMBER() over(Order by (Select 1)) as [Sr.No],ClassId,ClassName from Class");
             GridView1.DataSource = dt;
             GridView1.DataBind();
 

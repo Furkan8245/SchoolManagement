@@ -40,6 +40,24 @@ namespace SchoolManagementSystem.Models
                 return dt;
             }
 
+            // Parametreli Fetch metodunu ekleyin
+            public DataTable Fetch(string query, SqlParameter[] parameters)
+            {
+                DataTable dt = new DataTable();
+                using (SqlConnection con = new SqlConnection(_connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    {
+                        cmd.Parameters.AddRange(parameters);
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            con.Open();
+                            sda.Fill(dt);
+                        }
+                    }
+                }
+                return dt;
+            }
 
             internal void Query(string query, SqlParameter[] parameters)
             {
