@@ -19,7 +19,7 @@
              </div>
              <div class="col-md-6">
                  <label for="txtDoB">Doğum Tarihi</label>
-                 <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" TextMode="Date" required></asp:TextBox>
+                 <asp:TextBox ID="txtDoB" runat="server" CssClass="form-control" TextMode="Date" required></asp:TextBox>
              </div>
          </div>
 
@@ -29,7 +29,7 @@
          <asp:DropDownList ID="ddlGender" runat="server">
              <asp:ListItem Value="0">Cinsiyet Seç</asp:ListItem>
              <asp:ListItem Value="Erkek">Erkek</asp:ListItem>
-             <asp:ListItem Value="Kadın>Kadın</asp:ListItem>
+             <asp:ListItem Value="Kadın">Kadın</asp:ListItem>
              <asp:ListItem Value="Diğer">Diğer</asp:ListItem>
          </asp:DropDownList>
          <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Cinsiyet gerekli."
