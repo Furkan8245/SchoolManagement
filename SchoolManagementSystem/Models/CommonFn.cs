@@ -104,16 +104,31 @@ namespace SchoolManagementSystem.Models
             }
             public DataTable Fetch(string query)
             {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataAdapter sda = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
-                sda.Fill(dt);
+                string connectionString = ConfigurationManager.ConnectionStrings["SchoolCS"].ConnectionString;
+
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                        {
+                            try
+                            {
+                                conn.Open();
+                                sda.Fill(dt);
+                            }
+                            catch (SqlException ex)
+                            {
+                                // Hata mesajını loglayın veya yönetin
+                                Console.WriteLine("SQL Hatası: " + ex.Message);
+                            }
+                        }
+                    }
+                }
                 return dt;
             }
+
 
             internal DataTable Fetch(string query, SqlParameter[] parameters)
             {

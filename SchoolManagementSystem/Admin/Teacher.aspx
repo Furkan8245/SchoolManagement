@@ -26,7 +26,7 @@
           <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-5">
      <div class="col-md-6">
          <label for="dllGender">Cinsiyet</label>
-         <asp:DropDownList ID="ddlGender" runat="server">
+         <asp:DropDownList ID="ddlGender" runat="server" CssClass="form-control">
              <asp:ListItem Value="0">Cinsiyet Seç</asp:ListItem>
              <asp:ListItem Value="Erkek">Erkek</asp:ListItem>
              <asp:ListItem Value="Kadın">Kadın</asp:ListItem>
@@ -53,7 +53,7 @@
          </asp:TextBox>
      </div>
      <div class="col-md-6">
-         <label for="txtPassword>Şifre</label>
+         <label for="txtPassword">Şifre</label>
          <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required></asp:TextBox>
      </div>
  </div>
@@ -77,39 +77,66 @@
          </div>
 
          <div class="row mb-3 mr-lg-5 ml-lg-5">
-             <div class="col-md-6">
-                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" EmptyDataText="No record to display!" AutoGenerateColumns="False" AllowPaging="true" 
-                     OnPageIndexChanging="GridView1_PageIndexChanging" 
-                     OnRowCancelingEdit="GridView1_RowCancelingEdit" 
+             <div class="col-md-8">
+                 <asp:GridView ID="GridView1" runat="server" CssClass="table table-hover table-bordered" EmptyDataText="No record to display!" AutoGenerateColumns="False" AllowPaging="true"
+                     OnPageIndexChanging="GridView1_PageIndexChanging"
+                     OnRowCancelingEdit="GridView1_RowCancelingEdit"
                      PageSize="4"
-                     OnRowEditing="GridView1_RowEditing" 
+                     OnRowEditing="GridView1_RowEditing"
                      OnRowUpdating="GridView1_RowUpdating"
-                     OnRowDataBound="GridView1_RowDataBound" 
-                     DataKeyNames="SubjectId">
+                     OnRowDataBound="GridView1_RowDataBound"
+                     DataKeyNames="TeacherId" OnRowDeleting="GridView1_RowDeleting">
                      <Columns>
                          <asp:BoundField DataField="Sr.No" HeaderText="Sr.No" ReadOnly="true">
                              <ItemStyle HorizontalAlign="Center" />
                          </asp:BoundField>
+
                          <asp:TemplateField HeaderText="Class">
                              <EditItemTemplate>
-                                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
-                                 </asp:DropDownList>
+                                     <asp:TextBox ID="txtName" runat="server" Text='<%#Eval("Name") %>' CssClass="form-control" Width="100px"></asp:TextBox>
                              </EditItemTemplate>
                              <ItemTemplate>
-                                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                                 <asp:Label ID="lblName" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
                              </ItemTemplate>
                              <ItemStyle HorizontalAlign="Center"></ItemStyle>
                          </asp:TemplateField>
-                         <asp:TemplateField HeaderText="Subject">
+
+                         <asp:TemplateField HeaderText="Mobile">
                              <EditItemTemplate>
-                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%#Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
+                                 <asp:TextBox ID="txtMobile" runat="server" Text='<%#Eval("Mobile") %>' CssClass="form-control" Width="100px"></asp:TextBox>
                              </EditItemTemplate>
                              <ItemTemplate>
-                                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("SubjectName") %>'></asp:Label>
+                                 <asp:Label ID="lblMobile" runat="server" Text='<%# Eval("SubjectName") %>'></asp:Label>
                              </ItemTemplate>
                              <ItemStyle HorizontalAlign="Center" />
                          </asp:TemplateField>
-                         <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation">
+
+                         <asp:TemplateField HeaderText="Email">
+                            <ItemTemplate>
+                                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>'></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" />
+                               </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Password">
+                         <EditItemTemplate>
+                              <asp:TextBox ID="txtPassword" runat="server" Text='<%#Eval("Password") %>' CssClass="form-control" Width="100px"></asp:TextBox>
+                         </EditItemTemplate>
+                         <ItemTemplate>
+                            <asp:Label ID="lblPassword" runat="server" Text='<%# Eval("Password") %>'></asp:Label>
+                         </ItemTemplate>
+                             <ItemStyle HorizontalAlign="Center" />
+                         </asp:TemplateField>
+                         <asp:TemplateField HeaderText="Adress">
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtAdress" runat="server" Text='<%#Eval("Adress") %>' CssClass="form-control" Width="100px"></asp:TextBox>
+                        </EditItemTemplate>
+                        <ItemTemplate>
+                            <asp:Label ID="lblAdress" runat="server" Text='<%# Eval("Adress") %>'></asp:Label>
+                        </ItemTemplate>
+                        <ItemStyle HorizontalAlign="Center" />
+                        </asp:TemplateField>
+
+                         <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation" >
                              <ItemStyle HorizontalAlign="Center"></ItemStyle>
                          </asp:CommandField>
                      </Columns>
