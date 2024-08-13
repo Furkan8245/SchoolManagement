@@ -60,9 +60,11 @@ namespace SchoolManagementSystem.Admin
             }
             catch (Exception ex)
             {
-                lblMsg.Text = "Entered Subject already exists for <b> '" + classVal+"'</b>!";
+                // Hata mesajını ekranda göstermek
+                lblMsg.Text = "An error occurred: " + ex.Message;
                 lblMsg.CssClass = "alert alert-danger";
             }
+
         }
 
         private void GetSubject()

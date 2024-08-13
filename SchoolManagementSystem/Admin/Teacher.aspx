@@ -9,19 +9,26 @@
              <asp:Label ID="lblMsg" runat="server"></asp:Label>
          </div>
          <h3 class="text-center">Öğretmen Ekle</h3>
-         <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-5">
-             <div class="col-md-6">
-                 <label for="txtName">İsim</label>
-                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name" required>
-                 </asp:TextBox>
-                 <asp:RegularExpressionValidator runat="server" ErrorMessage="İsim karakterlerden oluşmalıdır." 
-                     ForeColor="Red" ValidationExpression="^[A-Za-z]*$" Display="Dynamic" SetFocusError="true" ControlToValidate="txtName" ></asp:RegularExpressionValidator>
-             </div>
-             <div class="col-md-6">
-                 <label for="txtDoB">Doğum Tarihi</label>
-                 <asp:TextBox ID="txtDoB" runat="server" CssClass="form-control" TextMode="Date" required></asp:TextBox>
-             </div>
-         </div>
+<div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-5">
+    <div class="col-md-6">
+        <label for="txtName">İsim</label>
+        <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name" />
+        <asp:RegularExpressionValidator 
+            runat="server" 
+            ErrorMessage="İsim karakterlerden oluşmalıdır." 
+            ForeColor="Red" 
+            ValidationExpression="^[A-Za-z]*$" 
+            Display="Dynamic" 
+            SetFocusOnError="true" 
+            ControlToValidate="txtName">
+        </asp:RegularExpressionValidator>
+    </div>
+    <div class="col-md-6">
+        <label for="txtDoB">Doğum Tarihi</label>
+        <asp:TextBox ID="txtDoB" runat="server" CssClass="form-control" TextMode="Date" />
+    </div>
+</div>
+
 
           <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-5">
      <div class="col-md-6">
