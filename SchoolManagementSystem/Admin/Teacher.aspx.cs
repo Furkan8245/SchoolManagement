@@ -158,7 +158,7 @@ namespace SchoolManagementSystem.Admin
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                // Veriyi bağlama işlemleri buraya gelebilir
+
             }
         }
     }

@@ -61,7 +61,7 @@
      </div>
      <div class="col-md-6">
          <label for="txtPassword">Şifre</label>
-         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required></asp:TextBox>
+         <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required TextMode="Password"></asp:TextBox>
      </div>
  </div>
 
@@ -79,7 +79,7 @@
 
          <div class="row mb-3 mr-lg-5 ml-lg-5">
              <div class="col-md-3 col-md-offset-2 mb-3">
-                 <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Subject Ekle"  />
+                 <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Öğretmen Ekle"  />
              </div>
          </div>
 
