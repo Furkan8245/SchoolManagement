@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using static SchoolManagementSystem.Models.CommonFn;
 
@@ -49,10 +50,12 @@ namespace SchoolManagementSystem.Admin
 
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
         }
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
@@ -89,10 +92,12 @@ namespace SchoolManagementSystem.Admin
                 GridView1.EditIndex = -1;
                 GetClass();
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
         }
         protected void txtClass_TextChanged(object sender, EventArgs e)
         {

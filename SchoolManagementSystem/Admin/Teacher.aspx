@@ -62,6 +62,8 @@
      <div class="col-md-6">
          <label for="txtPassword">Şifre</label>
          <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter Password" required TextMode="Password"></asp:TextBox>
+             
+
      </div>
  </div>
 

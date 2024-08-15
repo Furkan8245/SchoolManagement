@@ -72,10 +72,12 @@ namespace SchoolManagementSystem.Admin
                     lblMsg.CssClass = "alert alert-danger";
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)

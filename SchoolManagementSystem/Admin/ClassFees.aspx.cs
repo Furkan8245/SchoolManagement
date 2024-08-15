@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -59,10 +60,12 @@ namespace SchoolManagementSystem.Admin
 
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "')");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
         }
 
         private void GetFees()
@@ -94,10 +97,12 @@ namespace SchoolManagementSystem.Admin
                 GetFees() ;
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
 
         }
         protected void GridView1_RowEditing(object sender,GridViewEditEventArgs e)
@@ -118,10 +123,12 @@ namespace SchoolManagementSystem.Admin
                 GridView1.EditIndex = -1;
                 GetFees() ;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                Response.Write("<script>alert('" + ex.Message + "');</script>");
+                lblMsg.Text = "Bir hata oluştu: " + ex.Message;
+                lblMsg.CssClass = "alert alert-danger";
             }
+
         }
     }
 }

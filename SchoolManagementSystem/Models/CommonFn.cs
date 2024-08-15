@@ -152,7 +152,7 @@ namespace SchoolManagementSystem.Models
     {
         public class Commonfnx
         {
-            private readonly string _connectionString = ConfigurationManager.ConnectionStrings["SchoolCS"].ConnectionString;
+            private readonly string _connectionString = ConfigurationManager.ConnectionStrings["SchoolSysDB"].ConnectionString;
 
             public void Query(string query)
             {
@@ -219,6 +219,7 @@ namespace SchoolManagementSystem.Models
                     }
                 }
             }
+
 
             // Parametreli Fetch metodu
             public DataTable Fetch(string query, SqlParameter[] parameters)
