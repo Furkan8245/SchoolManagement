@@ -13,5 +13,9 @@ namespace SchoolManagementSystem.Admin
         {
 
         }
+        protected void ddlClass_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

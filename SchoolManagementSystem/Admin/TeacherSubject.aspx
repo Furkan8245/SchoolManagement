@@ -7,19 +7,22 @@
          <div>
              <asp:Label ID="lblMsg" runat="server"></asp:Label>
          </div>
-         <h3 class="text-center">New Subject</h3>
+         <h3 class="text-center">Add Teacher Subject</h3>
          <div class="row mb-3 mr-lg-5 ml-lg-5 mt-md-5">
              <div class="col-md-6">
                  <label for="txtClass">Class</label>
-                 <asp:DropDownList ID="ddlClass" runat="server" CssClass="form-control"></asp:DropDownList>
+                 <asp:DropDownList ID="ddlClass" runat="server" CssClass="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlClass_SelectedIndexChanged"></asp:DropDownList>
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Class is required." ControlToValidate="ddlClass"
-                     InitialValue="Select Class" 
+                     InitialValue="Select Class"
                      Display="Dynamic" SetFocusOnError="True" ForeColor="Red">
                  </asp:RequiredFieldValidator>
              </div>
              <div class="col-md-6">
-                 <label for="txtSubject">Subject</label>
-                 <asp:TextBox ID="txtSubject" runat="server" CssClass="form-control" placeholder="Enter Subject" required></asp:TextBox>
+                 <label for="ddlSubject">Subject</label>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Class is required." ControlToValidate="ddlSubject"
+    InitialValue="Select Class"
+    Display="Dynamic" SetFocusOnError="True" ForeColor="Red">
+</asp:RequiredFieldValidator>
              </div>
          </div>
 
