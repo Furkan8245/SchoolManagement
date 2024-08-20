@@ -54,6 +54,6 @@ C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\bin\Mi
 C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.AssemblyReference.cache
 C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.CoreCompileInputs.cache
-C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.csproj.CopyComplete
 C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.dll
 C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolManagementSystem.pdb
+C:\Users\furka\source\repos\SchoolManagementSystem\SchoolManagementSystem\obj\Debug\SchoolMa.D9F7BBC0.Up2Date

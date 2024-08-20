@@ -19,8 +19,9 @@
              </div>
              <div class="col-md-6">
                  <label for="ddlSubject">Subject</label>
+                 <asp:DropDownList ID="ddlSubject" runat="server" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Class is required." ControlToValidate="ddlSubject"
-    InitialValue="Select Class"
+    InitialValue="Select Subject"
     Display="Dynamic" SetFocusOnError="True" ForeColor="Red">
 </asp:RequiredFieldValidator>
              </div>
