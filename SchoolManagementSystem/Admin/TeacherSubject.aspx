@@ -19,9 +19,17 @@
              </div>
              <div class="col-md-6">
                  <label for="ddlSubject">Subject</label>
-                 <asp:DropDownList ID="ddlSubject" runat="server" CssClass="form-control" AutoPostBack="true"></asp:DropDownList>
-                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Class is required." ControlToValidate="ddlSubject"
+                 <asp:DropDownList ID="ddlSubject" runat="server" CssClass="form-control"></asp:DropDownList>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Subject is required." ControlToValidate="ddlSubject"
     InitialValue="Select Subject"
+    Display="Dynamic" SetFocusOnError="True" ForeColor="Red">
+</asp:RequiredFieldValidator>
+             </div>
+             <div class="col-md-6">
+                 <label for="ddlTeacher">Teacher</label>
+                 <asp:DropDownList ID="DropDownList2" runat="server" CssClass="form-control"></asp:DropDownList>
+                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Teacher is required." ControlToValidate="ddlTeacher"
+    InitialValue="Select Teacher"
     Display="Dynamic" SetFocusOnError="True" ForeColor="Red">
 </asp:RequiredFieldValidator>
              </div>
@@ -29,7 +37,7 @@
 
          <div class="row mb-3 mr-lg-5 ml-lg-5">
              <div class="col-md-3 col-md-offset-2 mb-3">
-                 <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Subject Ekle" OnClick="btnEkle_Class" />
+                 <asp:Button ID="btnEkle" runat="server" CssClass="btn btn-primary btn-block" BackColor="#5558C9" Text="Öğretmen Ata" OnClick="btnEkle_Class" />
              </div>
          </div>
 
