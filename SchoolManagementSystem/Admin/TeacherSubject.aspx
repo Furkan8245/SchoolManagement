@@ -59,6 +59,7 @@
                              <EditItemTemplate>
                                  <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
                                  </asp:DropDownList>
+                                 <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCs %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
                              </EditItemTemplate>
                              <ItemTemplate>
                                  <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
