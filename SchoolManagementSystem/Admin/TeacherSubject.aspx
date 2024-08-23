@@ -57,7 +57,7 @@
                          </asp:BoundField>
                          <asp:TemplateField HeaderText="Class">
                              <EditItemTemplate>
-                                 <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-control">
+                                 <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>' CssClass="form-control"  >
                                  </asp:DropDownList>
                                  <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCs %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
                              </EditItemTemplate>
