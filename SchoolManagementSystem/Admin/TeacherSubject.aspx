@@ -57,8 +57,9 @@
                          </asp:BoundField>
                          <asp:TemplateField HeaderText="Class">
                              <EditItemTemplate>
-                                 <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>' CssClass="form-control"  >
-                                 </asp:DropDownList>
+                                <asp:DropDownList ID="ddlClassGv" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("ClassId") %>' CssClass="form-control">
+                                </asp:DropDownList>
+
                                  <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCs %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
                              </EditItemTemplate>
                              <ItemTemplate>
@@ -68,13 +69,27 @@
                          </asp:TemplateField>
                          <asp:TemplateField HeaderText="Subject">
                              <EditItemTemplate>
-                                 <asp:TextBox ID="TextBox1" runat="server" Text='<%#Eval("SubjectName") %>' CssClass="form-control"></asp:TextBox>
+                                 <asp:TextBox ID="ddlSubjectGv" runat="server"  CssClass="form-control"></asp:TextBox>
                              </EditItemTemplate>
                              <ItemTemplate>
                                  <asp:Label ID="Label1" runat="server" Text='<%# Eval("SubjectName") %>'></asp:Label>
                              </ItemTemplate>
                              <ItemStyle HorizontalAlign="Center" />
                          </asp:TemplateField>
+
+                           <asp:TemplateField HeaderText="Teacher">
+                         <EditItemTemplate>
+                          <asp:DropDownList ID="ddlTeacherGv" runat="server" DataSourceID="SqlDataSource1" DataTextField="ClassName" DataValueField="ClassId" SelectedValue='<%# Eval("TeacherId") %>' CssClass="form-control"  >
+                          </asp:DropDownList>
+                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%ConnectionString=SchoolCS%>" SelectCommand="SELECT [TeacherId],[Name] FROM [Teacher] "></asp:SqlDataSource>
+                            <asp:SqlDataSource ID="SqlDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:SchoolCs %>" SelectCommand="SELECT * FROM [Class]"></asp:SqlDataSource>
+                             </EditItemTemplate>
+                                 <ItemTemplate>
+                                  <asp:Label ID="Label2" runat="server" Text='<%# Eval("ClassName") %>'></asp:Label>
+                                    </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
+                                </asp:TemplateField>
+
                          <asp:CommandField CausesValidation="false" ShowDeleteButton="True" ShowEditButton="True" HeaderText="Operation"> 
                              <ItemStyle HorizontalAlign="Center"></ItemStyle>
                          </asp:CommandField>

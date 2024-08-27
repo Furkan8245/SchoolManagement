@@ -1,0 +1,12 @@
+# Visual Studio ve geçici dosyalar
+.vs/
+bin/
+obj/
+
+# Kullanıcıya özel dosyalar
+*.user
+*.suo
+
+# Paketler ve bağımlılıklar
+packages/
+node_modules/
