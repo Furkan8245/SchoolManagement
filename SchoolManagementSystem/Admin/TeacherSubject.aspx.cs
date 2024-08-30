@@ -28,12 +28,12 @@ namespace SchoolManagementSystem.Admin
         }
         private void GetSubject()
         {
-            DataTable dt = fn.Fetch("Select * from Subject");
+            DataTable dt = fn.Fetch("Select * from Teacher");
             ddlClass.DataSource = dt;
-            ddlClass.DataTextField = "SubjectName";
-            ddlClass.DataValueField = "SubjectId";
+            ddlClass.DataTextField = "Name";
+            ddlClass.DataValueField = "TeacherId";
             ddlClass.DataBind();
-            ddlClass.Items.Insert(0, "Select Subject");
+            ddlClass.Items.Insert(0, "Select Teacher");
         }
         protected void ddlClass_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -44,6 +44,10 @@ namespace SchoolManagementSystem.Admin
             ddlClass.DataValueField = "SubjectId";
             ddlClass.DataBind();
             ddlClass.Items.Insert(0, "Select Subject");
+
+        }
+        protected void btnAdd_Click(object sender,EventArgs e)
+        {
 
         }
     }
